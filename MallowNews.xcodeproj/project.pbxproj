@@ -1,0 +1,577 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 110;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		F8025F5D30602A100098E7C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F8025F3E30602A0C0098E7C8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F8025F4530602A0C0098E7C8;
+			remoteInfo = MallowNews;
+		};
+		F8025F6730602A100098E7C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F8025F3E30602A0C0098E7C8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F8025F4530602A0C0098E7C8;
+			remoteInfo = MallowNews;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F8025F4630602A0C0098E7C8 /* MallowNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MallowNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8025F5C30602A100098E7C8 /* MallowNewsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MallowNewsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8025F6630602A100098E7C8 /* MallowNewsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MallowNewsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		F8025F6C30602A100098E7C8 /* Exceptions for "MallowNews" folder in "MallowNews" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = F8025F4530602A0C0098E7C8 /* MallowNews */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		F8025F4830602A0C0098E7C8 /* MallowNews */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				F8025F6C30602A100098E7C8 /* Exceptions for "MallowNews" folder in "MallowNews" target */,
+			);
+			path = MallowNews;
+			sourceTree = "<group>";
+		};
+		F8025F5F30602A100098E7C8 /* MallowNewsTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = MallowNewsTests;
+			sourceTree = "<group>";
+		};
+		F8025F6930602A100098E7C8 /* MallowNewsUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = MallowNewsUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F8025F4330602A0C0098E7C8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+			);
+		};
+		F8025F5930602A100098E7C8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+			);
+		};
+		F8025F6330602A100098E7C8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+			);
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F8025F3D30602A0C0098E7C8 = {
+			isa = PBXGroup;
+			children = (
+				F8025F4830602A0C0098E7C8 /* MallowNews */,
+				F8025F5F30602A100098E7C8 /* MallowNewsTests */,
+				F8025F6930602A100098E7C8 /* MallowNewsUITests */,
+				F8025F4730602A0C0098E7C8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F8025F4730602A0C0098E7C8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F8025F4630602A0C0098E7C8 /* MallowNews.app */,
+				F8025F5C30602A100098E7C8 /* MallowNewsTests.xctest */,
+				F8025F6630602A100098E7C8 /* MallowNewsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F8025F4530602A0C0098E7C8 /* MallowNews */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F8025F6D30602A100098E7C8 /* Build configuration list for PBXNativeTarget "MallowNews" */;
+			buildPhases = (
+				F8025F4230602A0C0098E7C8 /* Sources */,
+				F8025F4330602A0C0098E7C8 /* Frameworks */,
+				F8025F4430602A0C0098E7C8 /* Resources */,
+			);
+			buildRules = (
+			);
+			fileSystemSynchronizedGroups = (
+				F8025F4830602A0C0098E7C8 /* MallowNews */,
+			);
+			name = MallowNews;
+			productName = MallowNews;
+			productReference = F8025F4630602A0C0098E7C8 /* MallowNews.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F8025F5B30602A100098E7C8 /* MallowNewsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F8025F7230602A100098E7C8 /* Build configuration list for PBXNativeTarget "MallowNewsTests" */;
+			buildPhases = (
+				F8025F5830602A100098E7C8 /* Sources */,
+				F8025F5930602A100098E7C8 /* Frameworks */,
+				F8025F5A30602A100098E7C8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F8025F5E30602A100098E7C8 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				F8025F5F30602A100098E7C8 /* MallowNewsTests */,
+			);
+			name = MallowNewsTests;
+			productName = MallowNewsTests;
+			productReference = F8025F5C30602A100098E7C8 /* MallowNewsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F8025F6530602A100098E7C8 /* MallowNewsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F8025F7530602A100098E7C8 /* Build configuration list for PBXNativeTarget "MallowNewsUITests" */;
+			buildPhases = (
+				F8025F6230602A100098E7C8 /* Sources */,
+				F8025F6330602A100098E7C8 /* Frameworks */,
+				F8025F6430602A100098E7C8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F8025F6830602A100098E7C8 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				F8025F6930602A100098E7C8 /* MallowNewsUITests */,
+			);
+			name = MallowNewsUITests;
+			productName = MallowNewsUITests;
+			productReference = F8025F6630602A100098E7C8 /* MallowNewsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F8025F3E30602A0C0098E7C8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2700;
+				LastUpgradeCheck = 2700;
+				TargetAttributes = {
+					F8025F4530602A0C0098E7C8 = {
+						CreatedOnToolsVersion = 27.0;
+					};
+					F8025F5B30602A100098E7C8 = {
+						CreatedOnToolsVersion = 27.0;
+						TestTargetID = F8025F4530602A0C0098E7C8;
+					};
+					F8025F6530602A100098E7C8 = {
+						CreatedOnToolsVersion = 27.0;
+						TestTargetID = F8025F4530602A0C0098E7C8;
+					};
+				};
+			};
+			buildConfigurationList = F8025F4130602A0C0098E7C8 /* Build configuration list for PBXProject "MallowNews" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F8025F3D30602A0C0098E7C8;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = F8025F4730602A0C0098E7C8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F8025F4530602A0C0098E7C8 /* MallowNews */,
+				F8025F5B30602A100098E7C8 /* MallowNewsTests */,
+				F8025F6530602A100098E7C8 /* MallowNewsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F8025F4430602A0C0098E7C8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+			);
+		};
+		F8025F5A30602A100098E7C8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+			);
+		};
+		F8025F6430602A100098E7C8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+			);
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F8025F4230602A0C0098E7C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+			);
+		};
+		F8025F5830602A100098E7C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+			);
+		};
+		F8025F6230602A100098E7C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+			);
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F8025F5E30602A100098E7C8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F8025F4530602A0C0098E7C8 /* MallowNews */;
+			targetProxy = F8025F5D30602A100098E7C8 /* PBXContainerItemProxy */;
+		};
+		F8025F6830602A100098E7C8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F8025F4530602A0C0098E7C8 /* MallowNews */;
+			targetProxy = F8025F6730602A100098E7C8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		F8025F6E30602A100098E7C8 /* Debug configuration for PBXNativeTarget "MallowNews" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GC7R5CK35Q;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MallowNews/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.news";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ajith.MallowNews;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F8025F6F30602A100098E7C8 /* Release configuration for PBXNativeTarget "MallowNews" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GC7R5CK35Q;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MallowNews/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.news";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ajith.MallowNews;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F8025F7030602A100098E7C8 /* Debug configuration for PBXProject "MallowNews" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = GC7R5CK35Q;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F8025F7130602A100098E7C8 /* Release configuration for PBXProject "MallowNews" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = GC7R5CK35Q;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F8025F7330602A100098E7C8 /* Debug configuration for PBXNativeTarget "MallowNewsTests" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GC7R5CK35Q;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ajith.MallowNewsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MallowNews.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MallowNews";
+			};
+			name = Debug;
+		};
+		F8025F7430602A100098E7C8 /* Release configuration for PBXNativeTarget "MallowNewsTests" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GC7R5CK35Q;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ajith.MallowNewsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MallowNews.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MallowNews";
+			};
+			name = Release;
+		};
+		F8025F7630602A100098E7C8 /* Debug configuration for PBXNativeTarget "MallowNewsUITests" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GC7R5CK35Q;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ajith.MallowNewsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MallowNews;
+			};
+			name = Debug;
+		};
+		F8025F7730602A100098E7C8 /* Release configuration for PBXNativeTarget "MallowNewsUITests" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GC7R5CK35Q;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ajith.MallowNewsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MallowNews;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F8025F4130602A0C0098E7C8 /* Build configuration list for PBXProject "MallowNews" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F8025F7030602A100098E7C8 /* Debug configuration for PBXProject "MallowNews" */,
+				F8025F7130602A100098E7C8 /* Release configuration for PBXProject "MallowNews" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		F8025F6D30602A100098E7C8 /* Build configuration list for PBXNativeTarget "MallowNews" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F8025F6E30602A100098E7C8 /* Debug configuration for PBXNativeTarget "MallowNews" */,
+				F8025F6F30602A100098E7C8 /* Release configuration for PBXNativeTarget "MallowNews" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		F8025F7230602A100098E7C8 /* Build configuration list for PBXNativeTarget "MallowNewsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F8025F7330602A100098E7C8 /* Debug configuration for PBXNativeTarget "MallowNewsTests" */,
+				F8025F7430602A100098E7C8 /* Release configuration for PBXNativeTarget "MallowNewsTests" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		F8025F7530602A100098E7C8 /* Build configuration list for PBXNativeTarget "MallowNewsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F8025F7630602A100098E7C8 /* Debug configuration for PBXNativeTarget "MallowNewsUITests" */,
+				F8025F7730602A100098E7C8 /* Release configuration for PBXNativeTarget "MallowNewsUITests" */,
+			);
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F8025F3E30602A0C0098E7C8 /* Project object */;
+	validationLevel = 1;
+}
