@@ -7,12 +7,16 @@
 
 import Foundation
 
+// MARK: - API Response Model
+
 struct ArticlesResponse: Codable {
 	let count: Int
 	let next: URL?
 	let previous: URL?
 	let results: [Article]
 }
+
+// MARK: - Article Model
 
 struct Article: Codable {
 	let id: Int
@@ -39,6 +43,8 @@ struct Article: Codable {
 		case featured
 	}
 }
+
+// MARK: - Author Model
 
 struct Author: Codable {
 	let name: String

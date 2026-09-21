@@ -9,17 +9,25 @@
 import UIKit
 
 final class ImageLoader {
+    // MARK: - Singleton
 
     static let shared = ImageLoader()
 
+    // MARK: - Properties
+
     private let cache = NSCache<NSURL, UIImage>()
 
+    // MARK: - Initialization
+
     private init() {}
+
+    // MARK: - Image Fetching
 
     func image(from url: URL) async throws -> UIImage {
         guard var components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
             throw NetworkError.invalidURL
         }
+        // Upgrade insecure HTTP links to HTTPS to satisfy App Transport Security requirements.
         if components.scheme?.lowercased() == "http" {
             components.scheme = "https"
         }

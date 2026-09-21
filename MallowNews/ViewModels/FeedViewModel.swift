@@ -10,6 +10,7 @@ import Foundation
 
 @MainActor
 final class FeedViewModel {
+    // MARK: - View State
 
     enum State {
         case idle
@@ -19,6 +20,8 @@ final class FeedViewModel {
         case failed(String)
     }
 
+    // MARK: - Properties
+
     private(set) var articles: [Article] = []
     private(set) var featuredArticle: Article?
     private(set) var latestArticles: [Article] = []
@@ -27,24 +30,36 @@ final class FeedViewModel {
     private(set) var isLoadingNextPage = false {
         didSet { onPaginationChange?(isLoadingNextPage) }
     }
+    private(set) var paginationError: String? {
+        didSet { onPaginationError?(paginationError) }
+    }
     private(set) var state: State = .idle {
         didSet {
             onStateChange?(state)
         }
     }
 
+    // MARK: - Callbacks
+
     var onStateChange: ((State) -> Void)?
     var onPaginationChange: ((Bool) -> Void)?
+    var onPaginationError: ((String?) -> Void)?
+
+    // MARK: - Dependencies & Concurrency
 
     private let service: NewsService
     private var activeQuery: String?
     private var searchTask: Task<Void, Never>?
-    // Every replacement invalidates older initial and pagination responses.
+    // Request-generation tokens prevent stale or out-of-order API responses from overwriting newer search or refresh queries.
     private var generation = UUID()
 
-    init(service: NewsService = NetworkManager.shared) {
-        self.service = service
+    // MARK: - Initialization
+
+    init(service: NewsService? = nil) {
+        self.service = service ?? NetworkManager.shared
     }
+
+    // MARK: - Feed Loading
 
     func loadArticles() async {
         await loadInitial()
@@ -57,11 +72,11 @@ final class FeedViewModel {
         await fetchInitial(token: token)
     }
 
-    private func beginReplacement() -> UUID {
+    private func beginReplacement(isRefreshing: Bool = false) -> UUID {
         generation = UUID()
         nextPageURL = nil
         isLoadingNextPage = false
-        isRefreshing = false
+        self.isRefreshing = isRefreshing
         state = .loading
         return generation
     }
@@ -83,11 +98,13 @@ final class FeedViewModel {
         }
     }
 
+    // MARK: - Refresh & Retry
+
     func refresh() async {
         guard !isRefreshing else { return }
         searchTask?.cancel()
-        let token = beginReplacement()
-        isRefreshing = true
+        service.clearArticleCache()
+        let token = beginReplacement(isRefreshing: true)
         await fetchInitial(token: token)
         if token == generation { isRefreshing = false }
     }
@@ -96,26 +113,26 @@ final class FeedViewModel {
         await loadInitial(query: activeQuery)
     }
 
+    // MARK: - Search
+
     func search(for query: String) {
         searchTask?.cancel()
         activeQuery = query.trimmingCharacters(in: .whitespacesAndNewlines)
-        articles = []
-        featuredArticle = nil
-        latestArticles = []
         let token = beginReplacement()
         searchTask = Task { [weak self] in
+            // Debounce user keystrokes to reduce network thrash while typing.
 			try? await Task.sleep(nanoseconds: 350_000_000)
             guard !Task.isCancelled else { return }
             await self?.fetchInitial(token: token)
         }
     }
 
-    func loadNextPage() async {
-        guard case .loaded = state, !isRefreshing, !isLoadingNextPage,
-			  let nextURL = nextPageURL,
-			  let offset = nextOffset(from: nextURL) else { return }
+    // MARK: - Pagination
 
+    func loadNextPage() async {
+        guard case .loaded = state, !isRefreshing, !isLoadingNextPage, let nextURL = nextPageURL, let offset = nextOffset(from: nextURL) else { return }
         isLoadingNextPage = true
+        paginationError = nil
         let token = generation
         defer { if token == generation { isLoadingNextPage = false } }
 
@@ -132,9 +149,14 @@ final class FeedViewModel {
             splitArticles()
             state = .loaded
         } catch {
-            // Preserve loaded content when a later page fails.
+            guard token == generation, !Task.isCancelled else { return }
+            paginationError = error.localizedDescription
         }
     }
+
+    func retryNextPage() async { await loadNextPage() }
+
+    // MARK: - Helpers
 
     func article(withID id: Int) -> Article? {
         articles.first { $0.id == id }
@@ -144,11 +166,15 @@ final class FeedViewModel {
         var ids = Set<Int>()
         articles = response.results.filter { ids.insert($0.id).inserted }
         nextPageURL = response.next
+        featuredArticle = nil
         splitArticles()
     }
 
     private func splitArticles() {
-        featuredArticle = articles.first(where: \.featured) ?? articles.first
+        // Hero selection must remain stable while paginating; only assign on initial load so later pages don't swap the hero.
+        if featuredArticle == nil {
+            featuredArticle = articles.first(where: \.featured) ?? articles.first
+        }
         latestArticles = articles.filter { $0.id != featuredArticle?.id }
     }
 

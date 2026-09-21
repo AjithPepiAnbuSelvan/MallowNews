@@ -22,17 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		
 		let window = UIWindow(windowScene: windowScene)
 		
-		let feedViewController = FeedViewController()
-		let navigationController = UINavigationController(
-			rootViewController: feedViewController
-		)
-		
-		navigationController.setNavigationBarHidden(
-			true,
-			animated: false
-		)
-		
-		window.rootViewController = navigationController
+		window.rootViewController = MainTabBarController()
 		self.window = window
 		window.makeKeyAndVisible()
 		

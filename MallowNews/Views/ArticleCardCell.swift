@@ -8,27 +8,34 @@
 import UIKit
 
 final class ArticleCardCell: UICollectionViewCell {
-	
+	// MARK: - Reuse Identifier
+
 	static let reuseIdentifier = "ArticleCardCell"
-	
+
+	// MARK: - UI Components
+
 	private let thumbnailImageView = UIImageView()
 	private let sourceLabel = UILabel()
 	private let titleLabel = UILabel()
 	private let dateLabel = UILabel()
+	private let excerptLabel = UILabel()
 	private let imageActivityIndicator = UIActivityIndicatorView(style: .medium)
-	
+	private let stack = UIStackView()
+
+	// MARK: - Properties
+
 	private var imageTask: Task<Void, Never>?
 	private var representedArticleID: Int?
-	
+	private var thumbnailWidthConstraint: NSLayoutConstraint!
+
+	// MARK: - Initialization
+
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		
 		backgroundColor = .clear
 		
-		contentView.backgroundColor = .systemBackground
-		contentView.layer.cornerRadius = 16
-		contentView.layer.cornerCurve = .continuous
-		contentView.clipsToBounds = true
+		contentView.backgroundColor = .clear
 		
 		thumbnailImageView.backgroundColor = .tertiarySystemFill
 		thumbnailImageView.contentMode = .scaleAspectFill
@@ -37,7 +44,7 @@ final class ArticleCardCell: UICollectionViewCell {
 		imageActivityIndicator.hidesWhenStopped = true
 		imageActivityIndicator.color = .secondaryLabel
 		
-		sourceLabel.font = .preferredFont(forTextStyle: .caption1)
+		sourceLabel.font = .systemFont(ofSize: 11, weight: .bold)
 		sourceLabel.adjustsFontForContentSizeCategory = true
 		sourceLabel.textColor = .secondaryLabel
 		
@@ -49,21 +56,23 @@ final class ArticleCardCell: UICollectionViewCell {
 		dateLabel.font = .preferredFont(forTextStyle: .caption2)
 		dateLabel.adjustsFontForContentSizeCategory = true
 		dateLabel.textColor = .secondaryLabel
+
+		excerptLabel.font = .preferredFont(forTextStyle: .subheadline)
+		excerptLabel.textColor = .secondaryLabel
+		excerptLabel.numberOfLines = 2
 		
 		let textStack = UIStackView(
-			arrangedSubviews: [sourceLabel, titleLabel, dateLabel]
+			arrangedSubviews: [sourceLabel, titleLabel, excerptLabel, dateLabel]
 		)
 		
 		textStack.axis = .vertical
 		textStack.spacing = 6
 		textStack.alignment = .leading
 		
-		let stack = UIStackView(
-			arrangedSubviews: [textStack, thumbnailImageView]
-		)
-		
+		stack.addArrangedSubview(textStack)
+		stack.addArrangedSubview(thumbnailImageView)
 		stack.axis = .horizontal
-		stack.spacing = 14
+		stack.spacing = FeedStyle.rowSpacing
 		stack.alignment = .center
 		
 		contentView.addSubview(stack)
@@ -73,62 +82,71 @@ final class ArticleCardCell: UICollectionViewCell {
 		thumbnailImageView.translatesAutoresizingMaskIntoConstraints = false
 		imageActivityIndicator.translatesAutoresizingMaskIntoConstraints = false
 		
-        // UIKit temporarily imposes its estimated height before self-sizing.
-        // Let this inset yield during that pass, keeping the image intact.
+        // Lower priority allows the constraint to yield during UIKit's initial estimated-height pass, avoiding layout warnings.
         let bottomInset = stack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -14)
         bottomInset.priority = UILayoutPriority(999)
 		NSLayoutConstraint.activate([
-			stack.topAnchor.constraint(
-				equalTo: contentView.topAnchor,
-				constant: 16
-			),
-			stack.leadingAnchor.constraint(
-				equalTo: contentView.leadingAnchor,
-				constant: 16
-			),
-			stack.trailingAnchor.constraint(
-				equalTo: contentView.trailingAnchor,
-				constant: -16
-			),
+			stack.topAnchor.constraint( equalTo: contentView.topAnchor, constant: FeedStyle.contentInset),
+			stack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: FeedStyle.contentInset),
+			stack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -FeedStyle.contentInset),
             bottomInset,
-			
-			thumbnailImageView.widthAnchor.constraint(equalToConstant: 92),
 			thumbnailImageView.heightAnchor.constraint(equalToConstant: 88),
 			imageActivityIndicator.centerXAnchor.constraint(equalTo: thumbnailImageView.centerXAnchor),
 			imageActivityIndicator.centerYAnchor.constraint(equalTo: thumbnailImageView.centerYAnchor)
+		])
+		thumbnailWidthConstraint = thumbnailImageView.widthAnchor.constraint(equalToConstant: 92)
+		thumbnailWidthConstraint.isActive = true
+		let separator = UIView()
+		separator.backgroundColor = .separator
+		contentView.addSubview(separator)
+		separator.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			separator.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+			separator.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+			separator.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+			separator.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale)
 		])
 	}
 	
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
-	
-	func configure(with article: Article) {
-		representedArticleID = article.id
-		
-		sourceLabel.text = article.newsSite.uppercased()
-        sourceLabel.textColor = tintColor
-		titleLabel.text = article.title
-		
-		let formatter = DateFormatter()
-		formatter.dateFormat = "MMM d, yyyy"
-		dateLabel.text = formatter.string(from: article.publishedAt)
-		
-		loadImage(from: article.imageURL, articleID: article.id)
-	}
-	
+
+	// MARK: - Lifecycle / Cell Reuse
+
 	override func prepareForReuse() {
 		super.prepareForReuse()
 		
+		// Cancel in-flight image tasks to prevent recycled cells from displaying incorrect images.
 		imageTask?.cancel()
 		imageTask = nil
 		representedArticleID = nil
 		
 		thumbnailImageView.image = nil
 		thumbnailImageView.backgroundColor = .tertiarySystemFill
+		thumbnailWidthConstraint.constant = 92
+		thumbnailImageView.isHidden = false
 		imageActivityIndicator.stopAnimating()
 	}
-	
+
+	// MARK: - Configuration
+
+	func configure(with article: Article) {
+		representedArticleID = article.id
+		
+		sourceLabel.attributedText = FeedStyle.trackedSource(article.newsSite, color: tintColor)
+		titleLabel.text = article.title
+		excerptLabel.text = article.summary.trimmingCharacters(in: .whitespacesAndNewlines)
+		dateLabel.text = "\(article.publishedAt.relativeDescription)"
+		thumbnailWidthConstraint.constant = 92
+		thumbnailImageView.isHidden = false
+		stack.spacing = FeedStyle.rowSpacing
+		
+		loadImage(from: article.imageURL, articleID: article.id)
+	}
+
+	// MARK: - Image Loading
+
 	private func loadImage(from url: URL?, articleID: Int) {
 		imageTask?.cancel()
 		thumbnailImageView.contentMode = .scaleAspectFill
@@ -166,9 +184,10 @@ final class ArticleCardCell: UICollectionViewCell {
 	}
 	
 	private func showImageFallback() {
-		thumbnailImageView.contentMode = .center
-		thumbnailImageView.image = UIImage(systemName: "photo", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24, weight: .regular))
-		thumbnailImageView.tintColor = .tertiaryLabel
+		thumbnailImageView.image = nil
+		thumbnailWidthConstraint.constant = 0
+		thumbnailImageView.isHidden = true
+		stack.spacing = 0
 		imageActivityIndicator.stopAnimating()
 	}
 }

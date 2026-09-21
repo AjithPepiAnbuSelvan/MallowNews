@@ -1,15 +1,28 @@
+//
+//  FeaturedArticleCell.swift
+//  MallowNews
+//
+//  Created by Ajith Pepi Anbu Selvan on 21/09/26.
+//
+
 import UIKit
 
 final class FeaturedArticleCell: UICollectionViewCell {
+    // MARK: - Reuse Identifier
     static let reuseIdentifier = "FeaturedArticleCell"
+
+    // MARK: - UI Components
     private let photo = UIImageView()
     private let badge = UILabel()
     private let source = UILabel()
     private let headline = UILabel()
     private let metadata = UILabel()
+
+    // MARK: - Properties
     private var imageTask: Task<Void, Never>?
     private var requestID = UUID()
 
+    // MARK: - Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.backgroundColor = .systemBackground
@@ -55,19 +68,20 @@ final class FeaturedArticleCell: UICollectionViewCell {
 
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 
+    // MARK: - Configuration
     func configure(with article: Article) {
+        // Cancel existing image task to ensure slow responses don't overwrite current cell content.
         imageTask?.cancel()
         requestID = UUID()
         let token = requestID
         photo.image = nil
         badge.isHidden = !article.featured
-        source.text = article.newsSite.uppercased()
-        source.textColor = tintColor
+        source.attributedText = FeedStyle.trackedSource(article.newsSite, color: tintColor)
         badge.textColor = tintColor
         headline.text = article.title
         metadata.text = article.publishedAt.formatted(date: .abbreviated, time: .omitted)
-        accessibilityLabel = [badge.isHidden ? nil : badge.text, headline.text, metadata.text].compactMap { $0 }.joined(separator: ", ")
-        guard let url = article.imageURL else { return }
+        accessibilityLabel = [badge.isHidden ? nil : badge.text, article.newsSite, headline.text, metadata.text].compactMap { $0 }.joined(separator: ", ")
+        guard let url = article.imageURL else { showImageFallback(); return }
         imageTask = Task { [weak self] in
             guard let image = try? await ImageLoader.shared.image(from: url), !Task.isCancelled,
                   let self, self.requestID == token else { return }
@@ -75,11 +89,24 @@ final class FeaturedArticleCell: UICollectionViewCell {
         }
     }
 
+    // MARK: - Helpers
+    private func showImageFallback() {
+        photo.contentMode = .center
+        photo.tintColor = .tertiaryLabel
+        photo.image = UIImage(systemName: "photo", withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .regular))
+    }
+
+    // MARK: - Lifecycle / Cell Reuse
     override func prepareForReuse() {
         super.prepareForReuse()
         imageTask?.cancel()
         requestID = UUID()
         photo.image = nil
+        photo.contentMode = .scaleAspectFill
     }
-    deinit { imageTask?.cancel() }
+
+    // MARK: - Deinitialization
+    deinit {
+	    imageTask?.cancel()
+    }
 }
